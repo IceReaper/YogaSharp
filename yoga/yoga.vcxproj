@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>..\x86\</OutDir>
+    <IntDir>obj\x86\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>..\x64\</OutDir>
+    <IntDir>obj\x64\</IntDir>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ItemGroup>
+    <ClInclude Include="Bitfield.h" />
+    <ClInclude Include="CompactValue.h" />
+    <ClInclude Include="event.h" />
+    <ClInclude Include="log.h" />
+    <ClInclude Include="Utils.h" />
+    <ClInclude Include="YGConfig.h" />
+    <ClInclude Include="YGEnums.h" />
+    <ClInclude Include="YGFloatOptional.h" />
+    <ClInclude Include="YGInterop.h" />
+    <ClInclude Include="YGLayout.h" />
+    <ClInclude Include="YGMacros.h" />
+    <ClInclude Include="YGNode.h" />
+    <ClInclude Include="YGNodePrint.h" />
+    <ClInclude Include="YGStyle.h" />
+    <ClInclude Include="YGValue.h" />
+    <ClInclude Include="Yoga-internal.h" />
+    <ClInclude Include="Yoga.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="event.cpp" />
+    <ClCompile Include="log.cpp" />
+    <ClCompile Include="Utils.cpp" />
+    <ClCompile Include="YGConfig.cpp" />
+    <ClCompile Include="YGEnums.cpp" />
+    <ClCompile Include="YGInterop.cpp" />
+    <ClCompile Include="YGLayout.cpp" />
+    <ClCompile Include="YGNode.cpp" />
+    <ClCompile Include="YGNodePrint.cpp" />
+    <ClCompile Include="YGStyle.cpp" />
+    <ClCompile Include="YGValue.cpp" />
+    <ClCompile Include="Yoga.cpp" />
+  </ItemGroup>
+</Project>
