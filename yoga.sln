@@ -1,0 +1,15 @@
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "yoga", "yoga\yoga.vcxproj", "{0446C86B-F47B-4C46-B673-C7AE0CFF35D5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0446C86B-F47B-4C46-B673-C7AE0CFF35D5}.Release|x64.ActiveCfg = Release|x64
+		{0446C86B-F47B-4C46-B673-C7AE0CFF35D5}.Release|x64.Build.0 = Release|x64
+		{0446C86B-F47B-4C46-B673-C7AE0CFF35D5}.Release|x86.ActiveCfg = Release|Win32
+		{0446C86B-F47B-4C46-B673-C7AE0CFF35D5}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+EndGlobal
