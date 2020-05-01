@@ -7,11 +7,17 @@
         <Company>Facebook</Company>
     </PropertyGroup>
     <ItemGroup>
+    <None Update="Facebook.Yoga.dll.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+    <ItemGroup>
         <Content CopyToOutputDirectory="PreserveNewest" Pack="true" Include="../x86/yoga.dll" Link="yoga.dll" PackagePath="x86/yoga.dll" />
         <Content CopyToOutputDirectory="PreserveNewest" Pack="true" Include="../x64/yoga.dll" Link="yoga.dll" PackagePath="x64/yoga.dll" />
         <Content CopyToOutputDirectory="PreserveNewest" Pack="true" Include="../x86/libyoga.so" Link="libyoga.so" PackagePath="x86/libyoga.so" />
         <Content CopyToOutputDirectory="PreserveNewest" Pack="true" Include="../x64/libyoga.so" Link="libyoga.so" PackagePath="x64/libyoga.so" />
         <Content CopyToOutputDirectory="PreserveNewest" Pack="true" Include="../x86/libyoga.dylib" Link="libyoga.dylib" PackagePath="x86/libyoga.dylib" />
         <Content CopyToOutputDirectory="PreserveNewest" Pack="true" Include="../x64/libyoga.dylib" Link="libyoga.dylib" PackagePath="x64/libyoga.dylib" />
+        <Content CopyToOutputDirectory="PreserveNewest" Pack="true" Include="Facebook.Yoga.targets" Link="Facebook.Yoga.targets" PackagePath="build/Facebook.Yoga.targets" />
     </ItemGroup>
 </Project>
