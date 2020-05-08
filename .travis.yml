@@ -1,0 +1,81 @@
+stages:
+  - natives
+  - package
+
+jobs:
+  include:
+    - stage: natives
+      os: linux
+      dist: bionic
+      language: cpp
+      workspaces:
+        create:
+          name: linux-natives
+          paths:
+            - ./x86/yoga.so
+            - ./x64/yoga.so
+      install:
+        - sudo apt update # Otherwise apt will fail to find g++-multilib!
+        - sudo apt upgrade # Otherwise apt will fail to install g++-multilib!
+        - sudo apt install -y g++-multilib # We need this to build 32bit!
+      script:
+        - mkdir x86
+        - mkdir x64
+        - make
+
+    - stage: natives
+      os: osx
+      language: cpp
+      workspaces:
+        create:
+          name: osx-natives
+          paths:
+            - /tmp/x86/yoga.dylib # Using /tmp instead of . to get around travis path problems.
+            - /tmp/x64/yoga.dylib # Using /tmp instead of . to get around travis path problems.
+      script:
+        - mkdir x86
+        - mkdir x64
+        - make
+        - mv x* /tmp # Moving natives to /tmp/ to avoid extraction problems in later step.
+
+    - stage: natives
+      os: windows
+      language: cpp
+      workspaces:
+        create:
+          name: windows-natives
+          paths:
+            - ./x86/yoga.dll
+            - ./x64/yoga.dll
+      env:
+        - MSBUILD_PATH="/C/Program Files (x86)/Microsoft Visual Studio/2017/BuildTools/MSBuild/15.0/Bin"
+      script:
+        - mkdir x86
+        - mkdir x64
+        - export PATH=$MSBUILD_PATH:$PATH
+        - MSBuild.exe yoga.sln //p:Platform="x86"
+        - MSBuild.exe yoga.sln //p:Platform="x64"
+
+    - stage: package
+      language: csharp
+      mono: none
+      dotnet: 3.1.100
+      workspaces:
+        use:
+          - linux-natives
+          - osx-natives
+          - windows-natives
+      script:
+        - mv C:/Users/travis/build/IceReaper/YogaSharp/x86/*.dll x86 # Moving Windows natives as travis messes up cross platform paths...
+        - mv C:/Users/travis/build/IceReaper/YogaSharp/x64/*.dll x64 # Moving Windows natives as travis messes up cross platform paths...
+        - mv /tmp/x86/*.dylib x86 # Moving OSX natives as travis messes up cross platform paths...
+        - mv /tmp/x64/*.dylib x64 # Moving OSX natives as travis messes up cross platform paths...
+        - dotnet pack IceReaper.YogaSharp.sln
+      deploy:
+        provider: releases
+        api_key: ${GH_DEPLOY_API_KEY}
+        file_glob: true
+        file: IceReaper.YogaSharp/bin/Release/*.nupkg
+        skip_cleanup: true
+        on:
+          tags: true

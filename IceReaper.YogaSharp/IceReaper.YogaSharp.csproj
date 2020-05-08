@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <PackageId>IceReaper.YogaSharp</PackageId>
+    </PropertyGroup>
+    <ItemGroup>
+        <None CopyToOutputDirectory="Always" Pack="true" Update="IceReaper.YogaSharp.dll.config" PackagePath="lib/netstandard2.0" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content CopyToOutputDirectory="PreserveNewest" Pack="true" Include="../x86/yoga.dll" Link="yoga.dll" PackagePath="x86/yoga.dll" />
+        <Content CopyToOutputDirectory="PreserveNewest" Pack="true" Include="../x64/yoga.dll" Link="yoga.dll" PackagePath="x64/yoga.dll" />
+        <Content CopyToOutputDirectory="PreserveNewest" Pack="true" Include="../x86/yoga.so" Link="yoga.so" PackagePath="x86/yoga.so" />
+        <Content CopyToOutputDirectory="PreserveNewest" Pack="true" Include="../x64/yoga.so" Link="yoga.so" PackagePath="x64/yoga.so" />
+        <Content CopyToOutputDirectory="PreserveNewest" Pack="true" Include="../x86/yoga.dylib" Link="yoga.dylib" PackagePath="x86/yoga.dylib" />
+        <Content CopyToOutputDirectory="PreserveNewest" Pack="true" Include="../x64/yoga.dylib" Link="yoga.dylib" PackagePath="x64/yoga.dylib" />
+        <Content CopyToOutputDirectory="PreserveNewest" Pack="true" Include="IceReaper.YogaSharp.targets" Link="IceReaper.YogaSharp.targets" PackagePath="build/IceReaper.YogaSharp.targets" />
+    </ItemGroup>
+</Project>
