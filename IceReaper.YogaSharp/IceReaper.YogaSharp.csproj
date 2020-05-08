@@ -1,6 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
+        <Version>1.18.0.3</Version>
         <PackageId>IceReaper.YogaSharp</PackageId>
     </PropertyGroup>
     <ItemGroup>
